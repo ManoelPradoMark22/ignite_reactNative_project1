@@ -21,7 +21,7 @@ export function Home() {
 
   useEffect(() => {
     console.log("useEffect executado")
-  }, []);
+  }, [mySkills]);
 
   return (
     <View style={styles.container}>
