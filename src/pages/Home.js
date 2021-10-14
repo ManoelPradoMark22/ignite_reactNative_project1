@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     View,
     Text,
@@ -18,6 +18,10 @@ export function Home() {
   function handleAddNewSkill() {
     setMySkills(olsState => [...olsState, newSkill]);
   }
+
+  useEffect(() => {
+    console.log("useEffect executado")
+  }, []);
 
   return (
     <View style={styles.container}>
