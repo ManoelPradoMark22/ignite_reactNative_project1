@@ -14,18 +14,34 @@ import {SkillCard} from '../components/SkillCard';
 export function Home() {
   const [newSkill, setNewSkill] = useState('');
   const [mySkills, setMySkills] = useState([]);
+  const [gretting, setGretting] = useState('');
 
   function handleAddNewSkill() {
     setMySkills(olsState => [...olsState, newSkill]);
   }
 
   useEffect(() => {
-    console.log("useEffect executado")
-  }, [mySkills]);
+    const currentHour = new Date().getHours();
+    //+3 horas -> fuso horario
+    if (currentHour<15) {
+      setGretting('Good moorning');
+    } else if(currentHour>=15 && currentHour<21) {
+      setGretting('Good afternoon');
+    } else {
+      setGretting('Good night');
+    }
+    
+  }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, Manoel</Text>
+      <Text style={styles.title}>
+        Welcome, Manoel
+      </Text>
+
+      <Text style={styles.greetings}>
+        { gretting }
+      </Text>
 
       <TextInput
         style={styles.input}
@@ -71,5 +87,8 @@ const styles = StyleSheet.create({
     padding: Platform.OS === 'ios' ? 15 : 10,
     marginTop: 30,
     borderRadius: 7
+  },
+  greetings: {
+    color: '#fff'
   }
 });
