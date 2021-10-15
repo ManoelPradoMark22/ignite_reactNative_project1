@@ -39,10 +39,9 @@ export function Home() {
 
   useEffect(() => {
     const currentHour = new Date().getHours();
-    //+3 horas -> fuso horario
-    if (currentHour<15) {
+    if (currentHour<12) {
       setGretting('Good moorning');
-    } else if(currentHour>=15 && currentHour<21) {
+    } else if(currentHour>=12 && currentHour<18) {
       setGretting('Good afternoon');
     } else {
       setGretting('Good night');
